@@ -1,0 +1,693 @@
+/* ==========================================================================
+   1. Page Setup & Infinite Grid Background
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+    
+    /* Lock vertical scrolling, allow native horizontal scrolling */
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    
+    /* 40px x 40px Blueprint Line Grid Pattern across the full canvas */
+    background-color: #f7f9f6;
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Custom Scrollbar for Pure CSS Navigation */
+body::-webkit-scrollbar {
+    height: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #111111;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   2. Horizontal Canvas Track (Expands Dynamically)
+   ========================================================================== */
+.horizontal-site {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100vh;
+    
+    /* Dynamically expands page width as new blocks or items are added */
+    width: max-content;
+    min-width: 100vw;
+    box-sizing: border-box;
+    padding: 0 60px;
+}
+
+/* ==========================================================================
+   3. Content Blocks & Typography
+   ========================================================================== */
+.page-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 850px;
+    margin-bottom: 20px;
+    margin-left: 200px;
+}
+
+.sub-badge {
+    background-color: #ffb703;
+    color: #111111;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    border: 2px solid #111111;
+    display: inline-block;
+}
+
+.main-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin: 16px 0 8px 0;
+    letter-spacing: -1px;
+    color: #111111;
+    line-height: 1.1;
+}
+
+.section-subtitle {
+    color: #555555;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* ==========================================================================
+   4. Clothesline Track & Cards
+   ========================================================================== */
+.clothesline-container {
+    position: relative;
+    width: 100%;
+}
+
+.string-line {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cards-track {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 40px 20px 50px 20px;
+}
+
+/* Cards */
+.peg-card {
+    position: relative;
+    flex: 0 0 190px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;
+}
+
+.peg {
+    width: 18px;
+    height: 28px;
+    background-color: #10b981;
+    border-radius: 4px;
+    border: 2px solid #111111;
+    z-index: 3;
+    margin-bottom: -10px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
+}
+
+.card-inner {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 10px;
+    border: 3px solid #111111;
+    box-shadow: 5px 5px 0px #111111;
+    width: 100%;
+    min-height: 220px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+}
+
+.image-frame {
+    width: 100%;
+    height: 115px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #111111;
+    background-color: #e5e7eb;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-text h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 8px 0 2px 0;
+    color: #111111;
+}
+
+.card-text p {
+    font-size: 0.75rem;
+    color: #555555;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Card Rotations */
+.card-1 { transform: translateY(0px) rotate(-6deg); }
+.card-2 { transform: translateY(22px) rotate(-3deg); }
+.card-3 { transform: translateY(35px) rotate(-1deg); }
+.card-4 { transform: translateY(35px) rotate(1deg); }
+.card-5 { transform: translateY(22px) rotate(3deg); }
+.card-6 { transform: translateY(0px) rotate(6deg); }
+
+/* Pure CSS Hover Animations */
+.peg-card:hover {
+    transform: translateY(-12px) scale(1.08) rotate(0deg) !important;
+    z-index: 20;
+}
+
+.peg-card:hover .card-inner {
+    box-shadow: 10px 10px 0px #111111;
+}
+
+.peg-card:hover .peg {
+    background-color: #ffb703;
+}
+/* ==========================================================================
+   1. Page Setup & Infinite Blueprint Grid Background
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+    
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    
+    background-color: #f7f9f6;
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* ==========================================================================
+   2. Board Layout & Header Setup
+   ========================================================================== */
+.horizontal-site {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: max-content;
+    min-width: 100vw;
+    box-sizing: border-box;
+    padding: 0 60px;
+}
+
+.puzzle-board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.board-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 16px;
+}
+
+.board-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #111111;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.board-badge {
+    background-color: #ffb703;
+    color: #111111;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 3px solid #111111;
+    box-shadow: 2px 2px 0px #111111;
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+/* 6x5 Puzzle Grid - Borderless Container */
+.puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 150px);
+    grid-template-rows: repeat(5, 100px);
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    margin-left: 300px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    position: relative;
+}
+
+/* Individual Puzzle Tile */
+.puzzle-tile {
+    position: relative;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    overflow: visible;
+    cursor: pointer;
+    transition: transform 0.2s ease, z-index 0.2s ease, filter 0.2s ease;
+    z-index: 1;
+}
+
+.tile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.tile-inner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.tile-label {
+    position: relative;
+    z-index: 2;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #111111;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 4px;
+    border-radius: 3px;
+    width: max-content;
+}
+
+/* Flat Interlocking Puzzle Connector Tabs */
+.puzzle-tile::before,
+.puzzle-tile::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: inherit;
+    border: none;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+/* Horizontal Connector */
+.puzzle-tile::before {
+    top: calc(50% - 10px);
+    right: -10px;
+}
+
+/* Vertical Connector */
+.puzzle-tile::after {
+    bottom: -10px;
+    left: calc(50% - 10px);
+}
+
+/* Hide connectors on boundary edges */
+.puzzle-tile:nth-child(6n)::before { display: none; }
+.puzzle-tile:nth-child(n+25)::after { display: none; }
+
+/* Interactive Hover Lift */
+.puzzle-tile:hover {
+    transform: scale(1.05);
+    z-index: 20;
+    filter: brightness(1.08);
+}
+
+.puzzle-tile:hover .tile-label {
+    background: #ffb703;
+}
+/* Card Stack Wrapper */
+.card-stack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+/* Stack Parent Container */
+.card-stack {
+    position: relative;
+    width: 220px;
+    height: 280px;
+    cursor: pointer;
+}
+
+/* Base Card Styling */
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Card Stack Rotations & Offsets --- */
+.card-back-3 {
+    transform: rotate(-8deg) translate(-12px, -6px);
+    z-index: 1;
+}
+
+.card-back-2 {
+    transform: rotate(6deg) translate(10px, -4px);
+    z-index: 2;
+}
+
+.card-back-1 {
+    transform: rotate(-3deg) translate(-4px, 2px);
+    z-index: 3;
+}
+
+.card-top {
+    transform: rotate(0deg) translate(0, 0);
+    z-index: 4;
+}
+
+/* --- Hover State: Interactive Deck Fan-Out --- */
+.card-stack:hover .card-back-3 {
+    transform: rotate(-14deg) translate(-22px, -10px);
+}
+
+.card-stack:hover .card-back-2 {
+    transform: rotate(12deg) translate(20px, -8px);
+}
+
+.card-stack:hover .card-back-1 {
+    transform: rotate(-5deg) translate(-8px, 4px);
+}
+
+.card-stack:hover .card-top {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Top Card Hover Overlay & Button --- */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.overlay-btn {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    letter-spacing: 0.3px;
+    transform: translateY(8px);
+    transition: transform 0.3s ease, background 0.2s ease;
+}
+
+/* Reveal overlay on hover */
+.card-stack:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-stack:hover .overlay-btn {
+    transform: translateY(0);
+}
+
+.card-overlay:hover .overlay-btn {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* --- Metadata Section (Title + Tags below) --- */
+.stack-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.stack-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111111;
+    margin: 0;
+}
+
+.stack-tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333333;
+    padding: 4px 12px;
+    border: 1px solid #111111;
+    border-radius: 20px;
+}
+.card-stack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 50px;
+    perspective: 1000px;
+}
+
+.fanned-deck {
+    position: relative;
+    width: 230px;
+    height: 300px;
+    cursor: pointer;
+}
+
+/* Base Card Styling */
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    transform-origin: bottom center;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Spread Card Offsets */
+.card-4 {
+    transform: rotate(-12deg) translate(-18px, -10px);
+    z-index: 1;
+}
+
+.card-3 {
+    transform: rotate(10deg) translate(16px, -6px);
+    z-index: 2;
+}
+
+.card-2 {
+    transform: rotate(-4deg) translate(-6px, 2px);
+    z-index: 3;
+}
+
+.card-top {
+    transform: rotate(0deg) translate(0, 0);
+    z-index: 4;
+}
+
+/* Hover Deck Expansion */
+.fanned-deck:hover .card-4 {
+    transform: rotate(-20deg) translate(-35px, -15px);
+}
+
+.fanned-deck:hover .card-3 {
+    transform: rotate(18deg) translate(30px, -10px);
+}
+
+.fanned-deck:hover .card-2 {
+    transform: rotate(-8deg) translate(-12px, 5px);
+}
+
+.fanned-deck:hover .card-top {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Overlay Styling */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 5;
+}
+
+.overlay-badge {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.explore-btn {
+    background: #ffffff;
+    color: #111111;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transform: translateY(12px);
+    transition: transform 0.35s ease, background-color 0.2s ease;
+}
+
+.fanned-deck:hover .card-overlay {
+    opacity: 1;
+}
+
+.fanned-deck:hover .explore-btn {
+    transform: translateY(0);
+}
+
+.explore-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* Metadata Section */
+.stack-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.stack-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #111111;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.stack-tags {
+    display: flex;
+    gap: 6px;
+}
+
+.tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #555555;
+    padding: 3px 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}

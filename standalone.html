@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring the First Half of the Year</title>
+    <style>
+        /* --- Page Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f9f6;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: #111111;
+        }
+
+        /* --- Clothesline Section Container --- */
+        .clothesline-section {
+            width: 100%;
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Stops whole-page horizontal scrolling */
+        }
+
+        /* Header Styling */
+        .clothesline-section .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .clothesline-section .sub-badge {
+            background-color: #ffb703;
+            color: #111111;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border: 2px solid #111111;
+            display: inline-block;
+        }
+
+        .clothesline-section .main-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 18px 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .clothesline-section .section-subtitle {
+            color: #555555;
+            font-size: 1.1rem;
+        }
+
+        /* --- Hanging Track & String Arc --- */
+        .clothesline-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .clothesline-container .string-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .clothesline-container .cards-track {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 16px;
+            padding-top: 15px;
+            padding-bottom: 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- Rigid Non-Collapsing Cards --- */
+        .peg-card {
+            position: relative;
+            flex: 0 0 170px; /* Lock flex item width to stop collapse */
+            min-width: 170px;
+            width: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Green Peg Pin */
+        .peg-card .peg {
+            width: 16px;
+            height: 28px;
+            background-color: #10b981;
+            border-radius: 4px;
+            border: 2px solid #111111;
+            z-index: 3;
+            margin-bottom: -10px;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Card Body */
+        .peg-card .card-inner {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 12px;
+            border: 3px solid #111111;
+            box-shadow: 6px 6px 0px #111111;
+            width: 100%;
+            min-height: 220px; /* Maintains shape while images load */
+            box-sizing: border-box;
+        }
+
+        .peg-card .image-frame {
+            width: 100%;
+            height: 110px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #111111;
+            background-color: #e5e7eb;
+        }
+
+        .peg-card .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .peg-card .card-text {
+            padding-top: 10px;
+        }
+
+        .peg-card .card-text h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .peg-card .card-text p {
+            font-size: 0.75rem;
+            color: #555555;
+            line-height: 1.3;
+        }
+
+        /* --- Arc Offset Rotations --- */
+        .peg-card.card-1 { transform: translateY(0px) rotate(-5deg); }
+        .peg-card.card-2 { transform: translateY(20px) rotate(-2deg); }
+        .peg-card.card-3 { transform: translateY(32px) rotate(-1deg); }
+        .peg-card.card-4 { transform: translateY(32px) rotate(1deg); }
+        .peg-card.card-5 { transform: translateY(20px) rotate(2deg); }
+        .peg-card.card-6 { transform: translateY(0px) rotate(5deg); }
+
+        /* Hover Lift Effect */
+        .peg-card:hover {
+            transform: translateY(-10px) scale(1.04) rotate(0deg) !important;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="clothesline-section">
+        
+        <div class="section-header">
+            <span class="sub-badge">⚡ MONTHLY TIMELINE</span>
+            <h2 class="main-title">EXPLORING THE FIRST HALF OF THE YEAR</h2>
+            <p class="section-subtitle">Key developments, project launches, and community work across H1.</p>
+        </div>
+
+        <div class="clothesline-container">
+            
+            <!-- String Arc Line -->
+            <svg class="string-line" viewBox="0 0 1200 200" preserveAspectRatio="none">
+                <path d="M 0,30 Q 600,160 1200,30" fill="none" stroke="#111111" stroke-width="3" stroke-dasharray="8 6" />
+            </svg>
+
+            <div class="cards-track">
+
+                <!-- January -->
+                <div class="peg-card card-1">
+                    <div class="peg"></div>
+                    <div class="card-inner">
+                        <div class="image-frame">
+                            <img src="https://picsum.photos/400/300?random=1" alt="January">
+                        </div>
+                        <div class="card-text">
+                            <h3>January</h3>
+                            <p>Kickoff, system blueprints & UI setup.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- February -->
+                <div class="peg-card card-2">
+                    <div class="peg"></div>
+                    <div class="card-inner">
+                        <div class="image-frame">
+                            <img src="https://picsum.photos/400/300?random=2" alt="February">
+                        </div>
+                        <div class="card-text">
+                            <h3>February</h3>
+                            <p>ESP32 hardware wiring & sensor testing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- March -->
+                <div class="peg-card card-3">
+                    <div class="peg"></div>
+                    <div class="card-inner">
+                        <div class="image-frame">
+                            <img src="https://picsum.photos/400/300?random=3" alt="March">
+                        </div>
+                        <div class="card-text">
+                            <h3>March</h3>
+                            <p>Tailwind & React application architecture.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- April -->
+                <div class="peg-card card-4">
+                    <div class="peg"></div>
+                    <div class="card-inner">
+                        <div class="image-frame">
+                            <img src="https://picsum.photos/400/300?random=4" alt="April">
+                        </div>
+                        <div class="card-text">
+                            <h3>April</h3>
+                            <p>Desktop app config & Figma prototyping.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- May -->
+                <div class="peg-card card-5">
+                    <div class="peg"></div>
+                    <div class="card-inner">
+                        <div class="image-frame">
+                            <img src="https://picsum.photos/400/300?random=5" alt="May">
+                        </div>
+                        <div class="card-text">
+                            <h3>May</h3>
+                            <p>Live community pitch & project demos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- June -->
+                <div class="peg-card card-6">
+                    <div class="peg"></div>
+                    <div class="card-inner">
+                        <div class="image-frame">
+                            <img src="https://picsum.photos/400/300?random=6" alt="June">
+                        </div>
+                        <div class="card-text">
+                            <h3>June</h3>
+                            <p>Sproutly Initiative & smart data tracking.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

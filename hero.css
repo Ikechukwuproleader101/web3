@@ -7,7 +7,7 @@
 
 :root {
     --bg-page: #f4f1ea;
-    --bg-hero: #e64a19;
+    --bg-hero: #dc19e6;
     --accent-yellow: #ffb74d;
     --badge-green: #2e7d32;
     --badge-blue: #1565c0;
@@ -323,6 +323,7 @@ body.horizontal-page-wrapper {
 
 .hero-panel {
     justify-content: flex-end;
+    margin-left: 500px;
     padding-right: 120px; /* Generous spacing separating hero from gallery */
 }
 
@@ -408,34 +409,6 @@ body.horizontal-page-wrapper {
     padding-right: 40px;
 }
 
-/* --- Clean Typography Formatting --- */
-.hero-bg-branding {
-    display: flex;
-    flex-direction: column;
-    user-select: none;
-}
-
-.hero-bg-branding .sub-label {
-    font-family: var(--font-mono), monospace;
-    font-size: 44px;
-    font-weight: 700;
-    color: var(--border-dark, #000000);
-    letter-spacing: 0.08em;
-    line-height: 1;
-    margin-bottom: -6px;
-    margin-left: 35px;
-}
-
-.hero-bg-branding .main-title-display {
-    font-family: var(--font-sans), "Space Grotesk", sans-serif;
-    font-size: clamp(22rem, 22vw, 17rem);
-    font-weight: 900;
-    line-height: 0.82;
-    color: var(--border-dark, #000000);
-    text-transform: uppercase;
-    letter-spacing: -0.05em;
-    margin: 0;
-}
 
 /* --- Hero Dashboard Panel Adjustment --- */
 .hero-panel {
@@ -460,4 +433,372 @@ body.horizontal-page-wrapper {
     .hero-panel {
         padding-left: 20px;
     }
+}
+/* --- Brutalist 3D Extruded Block Typography --- */
+.brutalist-branding-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    user-select: none;
+    padding: 20px;
+    margin-top: 110px;
+}
+
+.brutalist-branding-container .sub-tag {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Stacking and letter tightness */
+.extruded-text-stack {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.9;
+}
+
+.extruded-line {
+    font-family: 'Space Grotesk', 'Syne', sans-serif;
+    font-size: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    position: relative;
+    z-index: 1;
+    
+    /* Anchors the stretch to the left so it expands outward to the right */
+    transform-origin: left;
+    
+    /* Adds extra tracking between letters for an even wider profile */
+    
+    /* Prevents the stretched text from wrapping onto a second line */
+    white-space: nowrap;
+}
+
+/* Color Variant 1: Forest Green (Matching Reference Image) */
+.text-green {
+    color:var(--bg-hero);    
+    /* Layered text-shadows simulate the solid 3D black extrusion depth */
+    text-shadow:
+        1px 1px 0px #000000,
+        2px 2px 0px #000000,
+        3px 3px 0px #000000,
+        4px 4px 0px #000000,
+        5px 5px 0px #000000,
+        6px 6px 0px #000000,
+        7px 7px 0px #000000,
+        8px 8px 0px #000000,
+        9px 9px 0px #000000,
+        10px 10px 0px #000000,
+        12px 12px 0px #000000;
+}
+
+/* Color Variant 2: Golden Yellow (Matching Reference Image) */
+.text-yellow {
+    color: #e5b324;
+    margin-top: -0.1em; /* Slight upward overlap for that tight poster look */
+    z-index: 2;
+    
+    text-shadow:
+        1px 1px 0px #000000,
+        2px 2px 0px #000000,
+        3px 3px 0px #000000,
+        4px 4px 0px #000000,
+        5px 5px 0px #000000,
+        6px 6px 0px #000000,
+        7px 7px 0px #000000,
+        8px 8px 0px #000000,
+        9px 9px 0px #000000,
+        10px 10px 0px #000000,
+        12px 12px 0px #000000;
+}
+/* --- Cluster Container Anchored Under Text --- */
+.cutout-cluster {
+    position: relative;
+    /* Aligns directly below the DEV IKE'S text block */
+    margin-top: 350px; 
+    left: 10px;
+    
+    /* Defines a compact, controlled footprint */
+    width: 380px; 
+    height: 280px;
+    
+    z-index: 3;
+}
+
+.cutout-item {
+    position: absolute;
+    pointer-events: auto;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), z-index 0.2s;
+}
+
+.cutout-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%) contrast(115%) 
+            drop-shadow(3px 0 0 #ffffff) 
+            drop-shadow(-3px 0 0 #ffffff) 
+            drop-shadow(0 3px 0 #ffffff) 
+            drop-shadow(0 -3px 0 #ffffff)
+            drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* --- Tightened 5-Cutout Arrangement --- */
+
+/* 1. Main Anchor (Center Top) */
+.cutout-1 {
+    width: 140px;
+    top: 0px;
+    left: 110px;
+    transform: rotate(-2deg);
+    z-index: 5;
+}
+
+/* 2. Top Left Tuck */
+.cutout-2 {
+    width: 110px;
+    top: 15px;
+    left: 10px;
+    transform: rotate(-10deg);
+    z-index: 3;
+}
+
+/* 3. Top Right (Nudged toward the purple div) */
+.cutout-3 {
+    width: 120px;
+    top: 20px;
+    right: 10px;
+    transform: rotate(8deg);
+    z-index: 4;
+}
+
+/* 4. Bottom Left */
+.cutout-4 {
+    width: 125px;
+    bottom: 10px;
+    left: 40px;
+    transform: rotate(6deg);
+    z-index: 4;
+}
+
+/* 5. Bottom Right */
+.cutout-5 {
+    width: 115px;
+    bottom: 5px;
+    right: 35px;
+    transform: rotate(-5deg);
+    z-index: 2;
+}
+
+/* Hover Lift Effect */
+.cutout-item:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111111;
+}
+
+/* --- Stage Container --- */
+.recap-asset-stage {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+    padding: 40px;
+    margin-left: -500px;
+}
+
+/* --- SVG Sizing & Center Rotation --- */
+.brutalist-fat-burst {
+    width: 100px;
+    height: 100px;
+    display: block;
+    overflow: visible;
+    margin-left: -3000px;
+    margin-top: -450px;
+    /* Mathematical geometric center of the 300x300 viewBox */
+    transform-origin: center;
+    animation: burstSpinBackAndForth 5s ease-in-out infinite alternate;
+}
+
+/* --- Back and Forth Rotation --- */
+@keyframes burstSpinBackAndForth {
+    0% {
+        transform: rotate(-135deg) scale(0.95);
+    }
+    50% {
+        transform: rotate(15deg) scale(1.05);
+    }
+    100% {
+        transform: rotate(135deg) scale(0.95);
+    }
+}
+/* --- Header Component Container --- */
+.recap-header-section {
+    width: 100%;
+    padding: 60px 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden; /* Prevents whole-page overflow */
+}
+
+/* --- Header Typography --- */
+.recap-header-section .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.recap-header-section .sub-badge {
+    background-color: #ffb703;
+    color: #111111;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    border: 2px solid #111111;
+    display: inline-block;
+}
+
+.recap-header-section .main-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 16px 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.recap-header-section .section-subtitle {
+    color: #555555;
+    font-size: 1rem;
+}
+
+/* --- Hanging Track Area --- */
+.recap-header-section .clothesline-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 10px;
+}
+
+.recap-header-section .string-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.recap-header-section .cards-track {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- Non-Collapsing Peg Cards --- */
+.recap-header-section .peg-card {
+    position: relative;
+    flex: 0 0 160px; /* Locked width prevents layout collapse */
+    min-width: 160px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* Peg Pin */
+.recap-header-section .peg {
+    width: 16px;
+    height: 26px;
+    background-color: #10b981;
+    border-radius: 4px;
+    border: 2px solid #111111;
+    z-index: 3;
+    margin-bottom: -10px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Card Body */
+.recap-header-section .card-inner {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 10px;
+    border: 3px solid #111111;
+    box-shadow: 5px 5px 0px #111111;
+    width: 100%;
+    min-height: 210px;
+    box-sizing: border-box;
+}
+
+.recap-header-section .image-frame {
+    width: 100%;
+    height: 105px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #111111;
+    background-color: #e5e7eb;
+}
+
+.recap-header-section .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.recap-header-section .card-text {
+    padding-top: 10px;
+}
+
+.recap-header-section .card-text h3 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 3px;
+}
+
+.recap-header-section .card-text p {
+    font-size: 0.72rem;
+    color: #555555;
+    line-height: 1.3;
+}
+
+/* --- Arch Offsets --- */
+.recap-header-section .card-1 { transform: translateY(0px) rotate(-5deg); }
+.recap-header-section .card-2 { transform: translateY(18px) rotate(-2deg); }
+.recap-header-section .card-3 { transform: translateY(30px) rotate(-1deg); }
+.recap-header-section .card-4 { transform: translateY(30px) rotate(1deg); }
+.recap-header-section .card-5 { transform: translateY(18px) rotate(2deg); }
+.recap-header-section .card-6 { transform: translateY(0px) rotate(5deg); }
+
+/* Hover Effect */
+.recap-header-section .peg-card:hover {
+    transform: translateY(-8px) scale(1.04) rotate(0deg) !important;
+    z-index: 10;
 }
